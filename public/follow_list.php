@@ -85,7 +85,7 @@ $select_sth->execute([
   <?php endforeach; ?>
 </ul>
 
-<p><a href="/bbs.php">掲示板に戻る</a></p>
+<p><a href="/bbs.php">掲示板に戻る</a> | <a href="/profile.php">プロフィール画面に戻る</a></p>
 
 </body>
 </html>

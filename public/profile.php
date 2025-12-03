@@ -172,6 +172,9 @@ function bodyFilter(string $body): string {
 
 <a href="/bbs.php">掲示板に戻る</a>
 <a href="/setting/index.php">設定に行く</a>
+<a href="/followers.php">このユーザーのフォロワーを見る</a>
+<a href="/follow_list.php">このユーザーのフォロー一覧を見る</a>
+
 <hr>
 
 <h3>自己紹介</h3>
