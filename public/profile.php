@@ -156,6 +156,11 @@ function bodyFilter(string $body): string {
         <!-- 既にフォローしている場合 -->
         <div style="margin: 1em 0; color: gray;">
             <?= htmlspecialchars($relationship['created_at']) ?> にフォローしました。
+            <!-- キャンセル（解除）へ -->
+            <a href="/unfollow.php?followee_user_id=<?= $user['id'] ?>"
+               style="margin-left: 1em; padding:0.3em 0.6em; border-radius:4px; background:#fff; border:1px solid #ccc; text-decoration:none;">
+               フォロー解除
+            </a>
         </div>
     <?php endif; ?>
 <?php endif; ?>
