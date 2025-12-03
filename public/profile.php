@@ -22,6 +22,12 @@ $select_sth = $dbh->prepare("SELECT * FROM users WHERE id = :id");
 $select_sth->execute([':id' => $user_id]);
 $user = $select_sth->fetch();
 
+if (empty($user)) {
+  header("HTTP/1.1 404 Not Found");
+  print("そのようなユーザーIDの会員情報は存在しません");
+  exit;
+}
+
 // ---------------------------
 // ★ フォロー状態を取得
 // ---------------------------
@@ -38,12 +44,6 @@ if (!empty($_SESSION['login_user_id'])) { // ログイン中の場合のみチ�
     ':follower_user_id' => $_SESSION['login_user_id'], // 自分
   ]);
   $relationship = $select_sth->fetch();
-}
-
-if (empty($user)) {
-  header("HTTP/1.1 404 Not Found");
-  print("そのようなユーザーIDの会員情報は存在しません");
-  exit;
 }
 
 // 生年月日から年齢（満年齢）を計算する関数
