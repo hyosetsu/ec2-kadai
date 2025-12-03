@@ -46,6 +46,28 @@ if (!empty($_SESSION['login_user_id'])) { // ログイン中の場合のみチ�
   $relationship = $select_sth->fetch();
 }
 
+// ---------------------------
+// ★ あなたをフォローしているか（相手 → 自分）
+// ---------------------------
+$is_follower = false;
+
+if (!empty($_SESSION['login_user_id']) && $_SESSION['login_user_id'] != $user['id']) {
+
+    $sth = $dbh->prepare(
+      "SELECT * FROM user_relationships
+       WHERE follower_user_id = :other_id
+       AND followee_user_id = :me_id"
+    );
+    $sth->execute([
+      ':other_id' => $user['id'],              // プロフィールの主
+      ':me_id'    => $_SESSION['login_user_id'] // 自分
+    ]);
+
+    if ($sth->fetch()) {
+        $is_follower = true;
+    }
+}
+
 // 生年月日から年齢（満年齢）を計算する関数
 function calc_age_from_birthdate(?string $birthdate): ?int {
   if (empty($birthdate)) return null;
@@ -163,6 +185,12 @@ function bodyFilter(string $body): string {
             </a>
         </div>
     <?php endif; ?>
+<?php endif; ?>
+
+<?php if ($is_follower): ?>
+    <div style="color: green; margin: 0.5em 0;">
+        ✔ このユーザーはあなたをフォローしています
+    </div>
 <?php endif; ?>
 
 <h1><?= htmlspecialchars($user['name']) ?> さん のプロフィール</h1>
