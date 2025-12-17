@@ -29,7 +29,7 @@ if (!$user) {
 <p><?php echo htmlspecialchars($user['name']); ?> さん、ログインしました。</p>
 
 <hr>
-<a href="/bbs.php">掲示板はこちら</a>
+<a href="/timeline.php">タイムラインはこちら</a>
 <a href="/profile.php">プロフィールはこちら</a>
 <a href="/setting/index.php">設定画面はこちら</a>
 

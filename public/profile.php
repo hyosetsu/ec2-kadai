@@ -166,23 +166,27 @@ function bodyFilter(string $body): string {
 
 <!-- ★ フォローボタン表示部分 -->
 <?php if (!empty($_SESSION['login_user_id']) && $_SESSION['login_user_id'] != $user['id']): ?>
-    <?php if (empty($relationship)): ?>
-        <!-- フォローしていない場合 -->
+    <?php if($user['id'] === $_SESSION['login_user_id']): // 自分自身の場合 ?>
         <div style="margin: 1em 0;">
-            <a href="./follow.php?followee_user_id=<?= $user['id'] ?>"
-               style="padding: 0.5em 1em; background: #1DA1F2; color: white; border-radius: 5px; text-decoration:none;">
-                フォローする
-            </a>
+            これはあなたです！<br>
+            <a href="/setting/index.php">設定画面はこちら</a>
         </div>
-    <?php else: ?>
-        <!-- 既にフォローしている場合 -->
-        <div style="margin: 1em 0; color: gray;">
-            <?= htmlspecialchars($relationship['created_at']) ?> にフォローしました。
-            <!-- キャンセル（解除）へ -->
-            <a href="/unfollow.php?followee_user_id=<?= $user['id'] ?>"
-               style="margin-left: 1em; padding:0.3em 0.6em; border-radius:4px; background:#fff; border:1px solid #ccc; text-decoration:none;">
-               フォロー解除
-            </a>
+    <?php else: // 他人の場合 ?>
+        <div style="margin: 1em 0;">
+            <?php if(empty($relationship)): // フォローしていない場合 ?>
+            <div>
+                <a href="./follow.php?followee_user_id=<?= $user['id'] ?>">フォローする</a>
+            </div>
+            <?php else: // フォローしている場合 ?>
+            <div>
+               <?= $relationship['created_at'] ?> にフォローしました。
+            </div>
+            <?php endif; ?>
+            <?php if(!empty($follower_relationship)): // フォローされている場合 ?>
+            <div>
+               フォローされています。
+            </div>
+            <?php endif; ?>
         </div>
     <?php endif; ?>
 <?php endif; ?>
@@ -198,7 +202,7 @@ function bodyFilter(string $body): string {
   <p>生年月日: <?= htmlspecialchars($user['birthdate']) ?>　/　年齢: <?= calc_age_from_birthdate($user['birthdate']) ?>歳</p>
 <?php endif; ?>
 
-<a href="/bbs.php">掲示板に戻る</a>
+<a href="/timeline.php">タイムラインに戻る</a>
 <a href="/setting/index.php">設定に行く</a>
 <a href="/followers.php">このユーザーのフォロワーを見る</a>
 <a href="/follow_list.php">このユーザーのフォロー一覧を見る</a>

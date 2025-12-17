@@ -2,29 +2,6 @@
 require_once __DIR__ . '/init_session.php';
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
 
-// 投稿処理
-if (isset($_POST['body']) && !empty($_SESSION['login_user_id'])) {
-  $image_filename = null;
-  if (!empty($_POST['image_base64'])) {
-    $base64 = preg_replace('/^data:.+base64,/', '', $_POST['image_base64']);
-    $image_binary = base64_decode($base64);
-    $image_filename = strval(time()) . '_' . bin2hex(random_bytes(12)) . '.png';
-    $filepath = '/var/www/upload/image/' . $image_filename;
-    file_put_contents($filepath, $image_binary);
-  }
-
-  $insert_sth = $dbh->prepare("INSERT INTO bbs_entries (user_id, body, image_filename) VALUES (:user_id, :body, :image_filename)");
-  $insert_sth->execute([
-    ':user_id' => $_SESSION['login_user_id'],
-    ':body' => $_POST['body'],
-    ':image_filename' => $image_filename,
-  ]);
-
-  header("HTTP/1.1 303 See Other");
-  header("Location: ./bbs.php");
-  exit;
-}
-
 // 表示対象の会員ID(フォローしている会員)のリストを取得
 $target_user_ids_select_sth = $dbh->prepare(
   'SELECT * FROM user_relationships WHERE follower_user_id = :follower_user_id'
@@ -69,19 +46,9 @@ function bodyFilter(string $body): string
   <h1>掲示板</h1>
 
 <?php if (empty($_SESSION['login_user_id'])): ?>
-  <p>投稿するには <a href="/login.php">ログイン</a> が必要です。</p>
+  <p><a href="/login.php">ログイン</a>して自分のタイムラインを閲覧しましょう！</p>
 <?php else: ?>
-  <p>現在ログイン中 — <a href="/setting/index.php">設定画面はこちら</a></p>
-  <p><a href="/profile.php">プロフィール画面はこちら</a></p>
-  <form method="POST" action="./bbs.php" enctype="multipart/form-data" id="postForm">
-    <textarea name="body" required placeholder="本文を入力してください" rows="4" cols="40"></textarea>
-    <div style="margin:1em 0;">
-      <input type="file" accept="image/*" name="image" id="imageInput">
-    </div>
-    <input id="imageBase64Input" type="hidden" name="image_base64">
-    <canvas id="imageCanvas" style="display:none;"></canvas>
-    <button type="submit">送信</button>
-  </form>
+  <p><a href="/timeline.php">タイムラインはこちら</a></p>
 <?php endif; ?>
 
 <hr>
@@ -128,45 +95,5 @@ function bodyFilter(string $body): string
     </dl>
   </article>
 <?php endforeach; ?>
-
-<script>
-// 既存の画像縮小処理（あなたの既存コードをそのまま使用）
-document.addEventListener("DOMContentLoaded", () => {
-  const imageInput = document.getElementById("imageInput");
-  if (!imageInput) return;
-  const imageBase64Input = document.getElementById("imageBase64Input");
-  const canvas = document.getElementById("imageCanvas");
-
-  imageInput.addEventListener("change", () => {
-    if (imageInput.files.length < 1) return;
-    const file = imageInput.files[0];
-    if (!file.type.startsWith('image/')) return;
-
-    const reader = new FileReader();
-    const image = new Image();
-    reader.onload = () => {
-      image.onload = () => {
-        const maxLength = 1000;
-        let ow = image.naturalWidth;
-        let oh = image.naturalHeight;
-        let w = ow;
-        let h = oh;
-        if (ow > oh) {
-          if (ow > maxLength) { h = Math.round(h * maxLength / ow); w = maxLength; }
-        } else {
-          if (oh > maxLength) { w = Math.round(w * maxLength / oh); h = maxLength; }
-        }
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(image, 0, 0, w, h);
-        imageBase64Input.value = canvas.toDataURL('image/png', 0.9);
-      };
-      image.src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-});
-</script>
 </body>
 </html>
