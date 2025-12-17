@@ -1,5 +1,20 @@
 <?php
+session_start();
 $dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+
+// ログインしてなければログイン画面へ
+if (empty($_SESSION['login_user_id'])) {
+  header("HTTP/1.1 302 Found");
+  header("Location: /login.php");
+  exit;
+}
+
+// 自分がフォローしているユーザーID一覧を取得
+$followed_sth = $dbh->prepare(
+  "SELECT followee_user_id FROM user_relationships WHERE follower_user_id = :me"
+);
+$followed_sth->execute([':me' => $_SESSION['login_user_id']]);
+$followed_ids = $followed_sth->fetchAll(PDO::FETCH_COLUMN); // [1, 2, 3...] みたいな配列
 
 // 会員データを取得
 $select_sth = $dbh->prepare('SELECT * FROM users ORDER BY id DESC');
@@ -17,16 +32,32 @@ $select_sth->execute();
 
   <?php foreach($select_sth as $user): ?>
     <div style="display: flex; justify-content: start; align-items: center; padding: 1em 2em;">
-      <?php if(empty($user['icon_filename'])): ?>
-        <!-- アイコン無い場合は同じ大きさの空白を表示して揃えておく -->
-        <div style="height: 2em; width: 2em;"></div>
-      <?php else: ?>
-        <img src="/image/<?= $user['icon_filename'] ?>"
-          style="height: 2em; width: 2em; border-radius: 50%; object-fit: cover;">
-      <?php endif; ?>
-      <a href="/profile.php?user_id=<?= $user['id'] ?>" style="margin-left: 1em;">
-        <?= htmlspecialchars($user['name']) ?>
-      </a>
+      <div style="display:flex; align-items:center;">
+        <?php if(empty($user['icon_filename'])): ?>
+          <div style="height:2em; width:2em;"></div>
+        <?php else: ?>
+          <img src="/image/<?= htmlspecialchars($user['icon_filename']) ?>"
+            style="height:2em; width:2em; border-radius:50%; object-fit:cover;">
+        <?php endif; ?>
+
+        <a href="/profile.php?user_id=<?= htmlspecialchars($user['id']) ?>" style="margin-left:1em;">
+          <?= htmlspecialchars($user['name']) ?>
+        </a>
+      </div>
+
+      <div>
+        <?php if ((int)$user['id'] === (int)$_SESSION['login_user_id']): ?>
+          <span style="color:gray;">あなた</span>
+        <?php elseif (in_array((string)$user['id'], array_map('strval', $followed_ids), true)): ?>
+          <span style="color:gray;">フォロー中</span>
+          <!-- 解除導線も出したいならここに unfollow へのリンクを置ける -->
+        <?php else: ?>
+          <a href="/follow.php?followee_user_id=<?= htmlspecialchars($user['id']) ?>"
+             style="padding:0.4em 0.8em; background:#1DA1F2; color:#fff; border-radius:6px; text-decoration:none;">
+            フォローする
+          </a>
+        <?php endif; ?>
+      </div>
     </div>
     <hr style="border: none; border-bottom: 1px solid gray;">
   <?php endforeach; ?>
