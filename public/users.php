@@ -16,9 +16,18 @@ $followed_sth = $dbh->prepare(
 $followed_sth->execute([':me' => $_SESSION['login_user_id']]);
 $followed_ids = $followed_sth->fetchAll(PDO::FETCH_COLUMN); // [1, 2, 3...] みたいな配列
 
+// 検索キーワード（部分一致）
+$q = $_GET['q'] ?? '';
+$q = trim($q);
+
 // 会員データを取得
-$select_sth = $dbh->prepare('SELECT * FROM users ORDER BY id DESC');
-$select_sth->execute();
+if ($q !== '') {
+  $select_sth = $dbh->prepare('SELECT * FROM users WHERE name LIKE :q ORDER BY id DESC');
+  $select_sth->execute([':q' => '%' . $q . '%']);
+} else {
+  $select_sth = $dbh->prepare('SELECT * FROM users ORDER BY id DESC');
+  $select_sth->execute();
+}
 ?>
 
 <body>
@@ -29,6 +38,16 @@ $select_sth->execute();
     /
     <a href="/timeline.php">タイムライン</a>
   </div>
+
+  <form method="GET" style="margin: 1em 0;">
+    <input type="text" name="q" placeholder="名前で検索（部分一致）"
+      value="<?= htmlspecialchars($q, ENT_QUOTES, 'UTF-8') ?>">
+    <button type="submit">検索</button>
+
+    <?php if ($q !== ''): ?>
+      <a href="/users.php" style="margin-left: 0.5em;">クリア</a>
+    <?php endif; ?>
+  </form>
 
   <?php foreach($select_sth as $user): ?>
     <div style="display: flex; justify-content: start; align-items: center; padding: 1em 2em;">
