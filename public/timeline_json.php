@@ -47,6 +47,11 @@ foreach ($select_sth as $entry) {
     'body' => bodyFilter($entry['body']),
     'created_at' => $entry['created_at'],
 
+    // ★投稿者アイコン
+    'user_icon_url' => !empty($entry['user_icon_filename'])
+      ? '/image/' . $entry['user_icon_filename']
+      : null,
+
     // ★これを追加
     'post_image_url' => !empty($entry['image_filename'])
       ? '/image/' . $entry['image_filename']

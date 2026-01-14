@@ -85,7 +85,13 @@ $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表�
   <dt>番号</dt>
   <dd data-role="entryIdArea"></dd>
   <dt>投稿者</dt>
-  <dd>
+  <dd style="display: flex; align-items: center; gap: 0.5em;">
+  	<!-- ★投稿者アイコン -->
+  	<img data-role="entryUserIcon"
+    	   src=""
+      	 style="height: 2em; width: 2em; border-radius: 50%; object-fit: cover; display: none;">
+
+	  <!-- 投稿者名 -->
     <a href="" data-role="entryUserAnchor"></a>
   </dd>
   <dt>日時</dt>
@@ -123,6 +129,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 名前を表示
       entryCopied.querySelector('[data-role="entryUserAnchor"]').innerText = entry.user_name;
+
+			entryCopied.querySelector('[data-role="entryUserAnchor"]').href = entry.user_profile_url;
+
+			// ★投稿者アイコン
+			const userIconImg = entryCopied.querySelector('[data-role="entryUserIcon"]');
+
+			if (entry.user_icon_url) {
+			  userIconImg.src = entry.user_icon_url;
+			  userIconImg.style.display = 'block';
+			} else {
+			  userIconImg.style.display = 'none';
+			}
 
       // 名前のところのリンク先(プロフィール)のURLを設定
       entryCopied.querySelector('[data-role="entryUserAnchor"]').href = entry.user_profile_url;
