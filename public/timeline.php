@@ -91,7 +91,14 @@ $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表�
   <dt>日時</dt>
   <dd data-role="entryCreatedAtArea"></dd>
   <dt>内容</dt>
-  <dd data-role="entryBodyArea">
+  <dd>
+    <div data-role="entryBodyArea"></div>
+    <!-- ★画像表示枠を追加 -->
+    <div data-role="entryImageWrap" style="margin-top: 0.5em; display: none;">
+      <img data-role="entryImage"
+           src=""
+           style="max-height: 10em;">
+    </div>
   </dd>
 </dl>
 <div id="entriesRenderArea"></div>
@@ -125,6 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 本文を表示 (ここはHTMLなのでinnerHTMLで)
       entryCopied.querySelector('[data-role="entryBodyArea"]').innerHTML = entry.body;
+      const imageWrap = entryCopied.querySelector('[data-role="entryImageWrap"]');
+			const imageEl = entryCopied.querySelector('[data-role="entryImage"]');
+
+			if (entry.post_image_url) {
+			  imageEl.src = entry.post_image_url;
+  			imageWrap.style.display = 'block';
+			} else {
+  			imageWrap.style.display = 'none';
+			}
 
       // 最後に実際の描画を行う
       entriesRenderArea.appendChild(entryCopied);

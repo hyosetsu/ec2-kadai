@@ -38,7 +38,7 @@ function bodyFilter (string $body): string
 }
 
 // JSONに吐き出す用のentries
-$result_entries = [];
+header("HTTP/1.1 200 OK");
 foreach ($select_sth as $entry) {
   $result_entry = [
     'id' => $entry['id'],
@@ -46,11 +46,15 @@ foreach ($select_sth as $entry) {
     'user_profile_url' => '/profile.php?user_id=' . $entry['user_id'],
     'body' => bodyFilter($entry['body']),
     'created_at' => $entry['created_at'],
+
+    // ★これを追加
+    'post_image_url' => !empty($entry['image_filename'])
+      ? '/image/' . $entry['image_filename']
+      : null,
   ];
   $result_entries[] = $result_entry;
 }
 
-header("HTTP/1.1 200 OK");
 header("Content-Type: application/json");
 print(json_encode(['entries' => $result_entries]));
 
