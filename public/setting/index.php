@@ -8,7 +8,7 @@ if (empty($_SESSION['login_user_id'])) {
 }
 
 // DBに接続
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 // ログイン中ユーザー情報取得
 $select_sth = $dbh->prepare("SELECT * FROM users WHERE id = :id");
 $select_sth->execute([':id' => $_SESSION['login_user_id']]);

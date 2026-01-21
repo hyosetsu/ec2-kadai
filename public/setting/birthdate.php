@@ -6,7 +6,7 @@ if (empty($_SESSION['login_user_id'])) {
   exit;
 }
 
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 $select = $dbh->prepare("SELECT birthdate FROM users WHERE id = :id LIMIT 1");
 $select->execute([':id' => $_SESSION['login_user_id']]);
 $user = $select->fetch();
