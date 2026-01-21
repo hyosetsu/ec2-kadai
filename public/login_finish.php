@@ -22,9 +22,12 @@ if (!$user) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 <title>ログイン完了</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 <h1>ログイン完了</h1>
 
 <p><?php echo htmlspecialchars($user['name']); ?> さん、ログインしました。</p>
@@ -58,5 +61,6 @@ if (!$user) {
 <p><a href="logout.php">ログアウト</a></p>
 
 </body>
+</div>
 </html>
 

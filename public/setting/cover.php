@@ -39,8 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="../style.css">
 <title>カバー画像設定</title>
 <style>
   .cover-preview { width: 100%; max-width: 900px; height: 220px; background:#eee; border:1px solid #ccc; object-fit: cover; display:block; margin: 0 auto 1em; }
@@ -48,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </style>
 </head>
 <body>
+<div class="container">
 <a href="./index.php">設定一覧に戻る</a>
 <h1>カバー画像の設定/変更</h1>
 
@@ -144,5 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
+</div>
 </html>
 

@@ -50,9 +50,12 @@ if (!empty($_POST['name'])) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 <title>プロフィール編集</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 <h1>プロフィール編集</h1>
 
 <p><a href="login_finish.php">← 戻る</a></p>
@@ -73,5 +76,6 @@ if (!empty($_POST['name'])) {
 <?php endif; ?>
 
 </body>
+</div>
 </html>
 

@@ -90,9 +90,12 @@ $relationship = $check->fetch();
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 <title>フォロー解除の確認</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
   <h1>フォロー解除の確認</h1>
 
   <p>
@@ -110,5 +113,6 @@ $relationship = $check->fetch();
     </form>
   <?php endif; ?>
 </body>
+</div>
 </html>
 

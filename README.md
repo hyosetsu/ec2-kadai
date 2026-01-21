@@ -53,43 +53,58 @@ mkdir public/setting
 ```
 
 ### 設定ファイルを作る
-- compose.ymlはhttps://github.com/hyosetsu/EC2/blob/main/compose.yml から
-- Dockerfileはhttps://github.com/hyosetsu/EC2/blob/main/Dockerfile から
-- nginx/conf.d/default.confはhttps://github.com/hyosetsu/EC2/blob/main/nginx/conf.d/default.conf から
+- compose.ymlはhttps://github.com/hyosetsu/ec2-kadai/blob/main/compose.yml から
+- Dockerfileはhttps://github.com/hyosetsu/ec2-kadai/blob/main/Dockerfile から
+- nginx/conf.d/default.confはhttps://github.com/hyosetsu/ec2-kadai/blob/main/nginx/conf.d/default.conf から
 
 ### ファイルを作る
 ```
-vim public/0730/bbsimagetest.php
+vim public/bbs.php
 ```
-でファイルを編集する
-https://github.com/hyosetsu/EC2/blob/main/public/0730/bbsimagetest.php
+等でファイルを編集する
+https://github.com/hyosetsu/ec2-kadai/blob/main/public/bbs.php
 を書く
 
 ```
-vim public/0730/style.css
+vim public/style.css
 ```
 でcssファイルを編集する
-https://github.com/hyosetsu/EC2/blob/main/public/0730/style.css
+https://github.com/hyosetsu/ec2-kadai/blob/main/public/style.css
 を書く
 
 ### データベースを作る
 ```
-docker compose exec mysql mysql example_db
+docker compose exec mysql mysql kadai_db
 ```
 でmysqlに接続
 
-example_dbがすでに選ばれているので
+kadai_dbがすでに選ばれているのでlog.sqlに書いてある
 ```
-CREATE TABLE IF NOT EXISTS bbs_entries (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  body TEXT NOT NULL,
-  image_filename VARCHAR(255) DEFAULT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-  CREATE TABLE bbs_entries (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  body TEXT NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `users` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` TEXT NOT NULL,
+  `email` TEXT NOT NULL,
+  `password` TEXT NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE `users` ADD COLUMN icon_filename TEXT DEFAULT NULL;
+ALTER TABLE `users` ADD COLUMN introduction TEXT DEFAULT NULL;
+ALTER TABLE `users` ADD COLUMN cover_filename TEXT DEFAULT NULL;
+ALTER TABLE users ADD COLUMN birthdate DATE DEFAULT NULL;
+
+CREATE TABLE `bbs_entries` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT UNSIGNED NOT NULL,
+    `body` TEXT NOT NULL,
+    `image_filename` TEXT DEFAULT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `user_relationships` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `followee_user_id` INT UNSIGNED NOT NULL,
+  `follower_user_id` INT UNSIGNED NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
 でテーブルを作る

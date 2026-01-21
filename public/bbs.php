@@ -43,6 +43,8 @@ function bodyFilter(string $body): string
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '../_nav.php'; ?>
+<div class="container">
   <h1>掲示板</h1>
 
 <?php if (empty($_SESSION['login_user_id'])): ?>
@@ -96,4 +98,5 @@ function bodyFilter(string $body): string
   </article>
 <?php endforeach; ?>
 </body>
+</div>
 </html>

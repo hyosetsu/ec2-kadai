@@ -37,9 +37,12 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 <title>会員登録</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 <h1>会員登録</h1>
 <hr>
 会員登録済の人は<a href="/login.php">ログイン</a>しましょう。
@@ -55,5 +58,6 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password
 <div style="color: red;">入力されたメールアドレスは既に使われています。</div>
 <?php endif; ?>
 </body>
+</div>
 </html>
 

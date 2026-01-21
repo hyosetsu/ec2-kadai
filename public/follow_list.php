@@ -29,6 +29,7 @@ $select_sth->execute([
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 <title>フォロー済のユーザー一覧</title>
 <style>
   ul { padding-left: 0; list-style: none; }
@@ -49,6 +50,8 @@ $select_sth->execute([
 </style>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 
 <h1>フォロー済のユーザー一覧</h1>
 
@@ -89,5 +92,6 @@ $select_sth->execute([
 <p><a href="/bbs.php">掲示板に戻る</a> | <a href="/profile.php">プロフィール画面に戻る</a></p>
 
 </body>
+</div>
 </html>
 

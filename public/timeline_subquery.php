@@ -64,6 +64,7 @@ function bodyFilter(string $body): string {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 <title>タイムライン（サブクエリ版）</title>
 <style>
   body { font-family: sans-serif; max-width: 900px; margin: 1em auto; padding: 0 1em; }
@@ -77,6 +78,8 @@ function bodyFilter(string $body): string {
 </style>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 <header>
   <h1>タイムライン（サブクエリ）</h1>
   <nav>
@@ -207,5 +210,6 @@ document.getElementById('postForm').addEventListener('submit', async function(e)
 });
 </script>
 </body>
+</div>
 </html>
 

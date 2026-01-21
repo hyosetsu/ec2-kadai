@@ -39,11 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>生年月日設定</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="../style.css">
+  <title>生年月日設定</title>
 </head>
 <body>
+<div class="container">
 <a href="./index.php">設定一覧に戻る</a>
 <h1>生年月日設定</h1>
 
@@ -64,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <br><br>
   <button type="submit">保存</button>
 </form>
+</div>
 </body>
 </html>
 

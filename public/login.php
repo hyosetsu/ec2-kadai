@@ -38,9 +38,12 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 <title>ログイン</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 <hr>
 初めての人は<a href="/signup.php">会員登録</a>しましょう。
 <hr>
@@ -55,5 +58,6 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 <div style="color: red;">メールアドレスかパスワードが間違っています。</div>
 <?php endif; ?>
 </body>
+</div>
 </html>
 

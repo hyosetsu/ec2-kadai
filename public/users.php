@@ -74,9 +74,12 @@ $has_filter = ($q !== '') || ($year_from_raw !== '') || ($year_to_raw !== '');
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
   <title>会員一覧</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
   <h1>会員一覧</h1>
 
   <div style="margin-bottom: 1em;">
@@ -142,5 +145,6 @@ $has_filter = ($q !== '') || ($year_from_raw !== '') || ($year_to_raw !== '');
     <hr style="border: none; border-bottom: 1px solid gray;">
   <?php endforeach; ?>
 </body>
+</div>
 </html>
 

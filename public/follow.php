@@ -52,9 +52,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // フォームでPOSTした場合�
 }
 ?>
 
+<!doctype html>
+<html lang="ja">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 </head>
+<body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 <?php if($insert_result): ?>
 <div>
   <?= htmlspecialchars($followee_user['name']) ?> さんをフォローしました。<br>
@@ -72,3 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // フォームでPOSTした場合�
   </form>
 </div>
 <?php endif; ?>
+</div>
+</body>
+</html>

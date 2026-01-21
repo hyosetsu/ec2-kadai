@@ -44,11 +44,13 @@ if (isset($_POST['intro'])) {
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>自己紹介文設定</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="../style.css">
+  <title>自己紹介文設定</title>
 </head>
 <body>
+<div class="container">
 <h1>自己紹介文設定</h1>
 
 <a href="./index.php">設定一覧に戻る</a>
@@ -70,5 +72,6 @@ if (isset($_POST['intro'])) {
   <p style="color:green;"><?= htmlspecialchars($success) ?></p>
 <?php endif; ?>
 </body>
+</div>
 </html>
 

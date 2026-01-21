@@ -101,8 +101,11 @@ function bodyFilter(string $body): string {
 }
 ?>
 
-<head>
+<!doctype html>
+<html lang="ja">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="/style.css">
 </head>
 <style>
 /* ===== カバー画像とアイコンのレイアウト ===== */
@@ -134,6 +137,9 @@ function bodyFilter(string $body): string {
   border: 4px solid white; /* 見た目が美しくなる枠線 */
 }
 </style>
+<body>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
+<div class="container">
 
 <!-- =========================== -->
 <!-- ★ カバー画像 + アイコン重ねる部分 -->
@@ -255,3 +261,6 @@ function bodyFilter(string $body): string {
     </article>
   <?php endforeach; ?>
 <?php endif; ?>
+</div>
+</body>
+</html>

@@ -17,13 +17,14 @@ $user = $select_sth->fetch();
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="../style.css">
 <title>設定一覧</title>
-<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <a href="/timeline.php">タイムラインに戻る</a>
+<div class="container">
+  <a href="../timeline.php">タイムラインに戻る</a>
   <h1>設定画面</h1>
 
   <p>現在の設定</p>
@@ -43,6 +44,7 @@ $user = $select_sth->fetch();
      <li><a href="./birthdate.php">生年月日設定</a></li>
     <!-- 必要に応じて他の設定へのリンクを追加 -->
   </ul>
+</div>
 </body>
 </html>
 

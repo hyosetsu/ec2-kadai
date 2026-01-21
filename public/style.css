@@ -1,0 +1,223 @@
+/* ===== Reset-ish ===== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+img { max-width: 100%; height: auto; }
+a { color: inherit; }
+
+/* ===== Base ===== */
+:root{
+  --bg: #f7f7f8;
+  --card: #fff;
+  --text: #111;
+  --muted: #666;
+  --border: #e6e6e6;
+  --brand: #1DA1F2;
+  --danger: #e74c3c;
+  --radius: 12px;
+}
+
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container{
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 12px 12px 84px; /* 下部ナビ分の余白 */
+}
+
+h1{ font-size: 1.2rem; margin: 12px 0; }
+h2{ font-size: 1.05rem; margin: 16px 0 8px; }
+hr{ border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+
+/* ===== Header / Nav ===== */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247,247,248,.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner{
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand{
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.top-links{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.top-links a{
+  text-decoration: none;
+  color: #0f5e8d;
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+/* ===== Bottom tab (mobile friendly) ===== */
+.bottom-nav{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  padding: 8px 10px;
+  z-index: 60;
+}
+
+.bottom-nav-inner{
+  width: min(960px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.tab{
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+  padding: 10px 6px;
+  border-radius: 10px;
+  color: #0f5e8d;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+.tab.is-active{
+  background: rgba(29,161,242,.12);
+  color: #0b4f77;
+}
+
+/* ===== Card ===== */
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  margin: 10px 0;
+  box-shadow: 0 1px 0 rgba(0,0,0,.03);
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.muted{ color: var(--muted); font-size: .9rem; }
+.badge{ font-size: .85rem; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border); background: #fafafa; }
+.badge.following{ color: #2c7; border-color: rgba(34,204,119,.35); background: rgba(34,204,119,.08); }
+
+/* ===== Buttons ===== */
+.btn{
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.btn.primary{
+  border-color: rgba(29,161,242,.3);
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn.ghost{
+  background: #fff;
+}
+
+.btn.danger{
+  background: var(--danger);
+  color: #fff;
+  border-color: rgba(231,76,60,.35);
+}
+
+/* ===== Forms ===== */
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], textarea{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  background: #fff;
+}
+
+textarea{ min-height: 96px; resize: vertical; }
+
+.form-row{
+  display: grid;
+  gap: 10px;
+}
+
+@media (min-width: 640px){
+  .form-row.cols-2{ grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== Post item ===== */
+.post{
+  display: flex;
+  gap: 10px;
+}
+
+.avatar{
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  background: #ddd;
+}
+
+.post-main{ flex: 1; min-width: 0; }
+.post-head{
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.post-user a{ text-decoration: none; font-weight: 800; }
+.post-body{ margin-top: 6px; }
+.post-image{
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.post-image img{
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  background: #fafafa;
+}
+
