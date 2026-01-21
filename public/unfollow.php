@@ -89,6 +89,7 @@ $relationship = $check->fetch();
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>フォロー解除の確認</title>
 </head>
 <body>

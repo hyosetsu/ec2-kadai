@@ -37,6 +37,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ログイン</title>
 </head>
 <body>

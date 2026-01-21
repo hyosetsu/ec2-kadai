@@ -52,6 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // フォームでPOSTした場合�
 }
 ?>
 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
 <?php if($insert_result): ?>
 <div>
   <?= htmlspecialchars($followee_user['name']) ?> さんをフォローしました。<br>

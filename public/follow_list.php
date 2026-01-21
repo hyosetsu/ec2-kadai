@@ -28,6 +28,7 @@ $select_sth->execute([
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>フォロー済のユーザー一覧</title>
 <style>
   ul { padding-left: 0; list-style: none; }

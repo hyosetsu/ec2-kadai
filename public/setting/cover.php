@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>カバー画像設定</title>
 <style>
   .cover-preview { width: 100%; max-width: 900px; height: 220px; background:#eee; border:1px solid #ccc; object-fit: cover; display:block; margin: 0 auto 1em; }

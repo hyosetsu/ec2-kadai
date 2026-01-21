@@ -45,6 +45,7 @@ if (isset($_POST['intro'])) {
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>自己紹介文設定</title>
 </head>
 <body>

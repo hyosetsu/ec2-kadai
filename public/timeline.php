@@ -61,6 +61,9 @@ $target_user_ids = array_map(
 $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表示対象とする
 ?>
 
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
 <div>
   現在 <?= htmlspecialchars($user['name']) ?> (ID: <?= $user['id'] ?>) さんでログイン中
 </div>
