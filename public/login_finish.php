@@ -58,7 +58,7 @@ if (!$user) {
 <hr>
 
 <p><a href="profile_edit.php">プロフィールを編集する</a></p>
-<p><a href="logout.php">ログアウト</a></p>
+<p><a href="login.php">ログアウト</a></p>
 
 </body>
 </div>
