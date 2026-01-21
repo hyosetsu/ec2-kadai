@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/init_session.php';
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 // 表示対象の会員ID(フォローしている会員)のリストを取得
 $target_user_ids_select_sth = $dbh->prepare(
@@ -43,7 +43,7 @@ function bodyFilter(string $body): string
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php $active = 'timeline'; include __DIR__ . '../_nav.php'; ?>
+<?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
 <div class="container">
   <h1>掲示板</h1>
 

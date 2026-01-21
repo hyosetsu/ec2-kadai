@@ -73,53 +73,65 @@ $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表�
 <?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
 <div class="container">
 
-<div>
-  現在 <?= htmlspecialchars($user['name']) ?> (ID: <?= $user['id'] ?>) さんでログイン中
-</div>
-<div style="margin-bottom: 1em;">
-  <a href="/setting/index.php">設定画面</a>
-  /
-  <a href="/users.php">会員一覧画面</a>
-</div>
-<!-- フォームのPOST先はこのファイル自身にする -->
-<form method="POST" action="./timeline.php"><!-- enctypeは外しておきましょう -->
-  <textarea name="body" required></textarea>
-  <div style="margin: 1em 0;">
-    <input type="file" accept="image/*" name="image" id="imageInput">
+  <div class="card">
+    <div class="row">
+      <div>
+        <div style="font-weight:800;">タイムライン</div>
+        <div class="muted">現在 <?= htmlspecialchars($user['name']) ?> (ID: <?= htmlspecialchars($user['id']) ?>) でログイン中</div>
+      </div>
+      <a class="btn ghost" href="/users.php">会員一覧</a>
+    </div>
   </div>
-  <input id="imageBase64Input" type="hidden" name="image_base64"><!-- base64を送る用のinput (非表示) -->
-  <canvas id="imageCanvas" style="display: none;"></canvas><!-- 画像縮小に使うcanvas (非表示) -->
-  <button type="submit">送信</button>
-</form>
-<hr>
 
-<dl id="entryTemplate" style="display: none; margin-bottom: 1em; padding-bottom: 1em; border-bottom: 1px solid #ccc;">
-  <dt>番号</dt>
-  <dd data-role="entryIdArea"></dd>
-  <dt>投稿者</dt>
-  <dd style="display: flex; align-items: center; gap: 0.5em;">
-  	<!-- ★投稿者アイコン -->
-  	<img data-role="entryUserIcon"
-    	   src=""
-      	 style="height: 2em; width: 2em; border-radius: 50%; object-fit: cover; display: none;">
+  <div style="margin-bottom: 1em;">
+    <a href="/setting/index.php">設定画面</a>
+    /
+    <a href="/users.php">会員一覧画面</a>
+  </div>
+  <!-- フォームのPOST先はこのファイル自身にする -->
+  <div class="card">
+    <form method="POST" action="./timeline.php">
+      <div class="form-row">
+        <textarea name="body" required placeholder="いまどうしてる？"></textarea>
 
-	  <!-- 投稿者名 -->
-    <a href="" data-role="entryUserAnchor"></a>
-  </dd>
-  <dt>日時</dt>
-  <dd data-role="entryCreatedAtArea"></dd>
-  <dt>内容</dt>
-  <dd>
-    <div data-role="entryBodyArea"></div>
-    <!-- ★画像表示枠を追加 -->
-    <div data-role="entryImageWrap" style="margin-top: 0.5em; display: none;">
-      <img data-role="entryImage"
+        <div class="form-row cols-2">
+          <input type="file" accept="image/*" name="image" id="imageInput">
+          <button class="btn primary" type="submit">送信</button>
+        </div>
+
+        <input id="imageBase64Input" type="hidden" name="image_base64">
+        <canvas id="imageCanvas" style="display:none;"></canvas>
+      </div>
+    </form>
+  </div>
+
+  <dl id="entryTemplate" class="card post" style="display:none;">
+    <dt>番号</dt>
+    <dd data-role="entryIdArea"></dd>
+    <dt>投稿者</dt>
+    <dd style="display: flex; align-items: center; gap: 0.5em;">
+     	<!-- ★投稿者アイコン -->
+    	<img data-role="entryUserIcon"
+      	   src=""
+        	 style="height: 2em; width: 2em; border-radius: 50%; object-fit: cover; display: none;">
+
+  	  <!-- 投稿者名 -->
+      <a href="" data-role="entryUserAnchor"></a>
+    </dd>
+    <dt>日時</dt>
+    <dd data-role="entryCreatedAtArea"></dd>
+    <dt>内容</dt>
+    <dd>
+      <div data-role="entryBodyArea"></div>
+      <!-- ★画像表示枠を追加 -->
+      <div data-role="entryImageWrap" style="margin-top: 0.5em; display: none;">
+        <img data-role="entryImage"
            src=""
            style="max-height: 10em;">
-    </div>
-  </dd>
-</dl>
-<div id="entriesRenderArea"></div>
+      </div>
+    </dd>
+  </dl>
+  <div id="entriesRenderArea"></div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

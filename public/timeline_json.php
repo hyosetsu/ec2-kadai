@@ -39,6 +39,7 @@ function bodyFilter (string $body): string
 
 // JSONに吐き出す用のentries
 header("HTTP/1.1 200 OK");
+$result_entries = [];
 foreach ($select_sth as $entry) {
   $result_entry = [
     'id' => $entry['id'],

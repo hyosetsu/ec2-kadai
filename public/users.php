@@ -80,7 +80,6 @@ $has_filter = ($q !== '') || ($year_from_raw !== '') || ($year_to_raw !== '');
 <body>
 <?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
 <div class="container">
-  <h1>会員一覧</h1>
 
   <div style="margin-bottom: 1em;">
     <a href="/setting/index.php">設定画面</a>
@@ -88,30 +87,29 @@ $has_filter = ($q !== '') || ($year_from_raw !== '') || ($year_to_raw !== '');
     <a href="/timeline.php">タイムライン</a>
   </div>
 
+  <div class="card">
+    <h1 style="margin:0;">会員一覧</h1>
+    <div class="muted">名前（部分一致） / 生まれ年（範囲）で検索できます</div>
+  </div>
+
   <!-- 検索フォーム（名前：部分一致 / 生まれ年：範囲検索） -->
-  <form method="GET" style="margin: 1em 0;">
-    <div style="margin-bottom:0.5em;">
-      <input type="text" name="q" placeholder="名前で検索（部分一致）"
-        value="<?= htmlspecialchars($q, ENT_QUOTES, 'UTF-8') ?>">
-    </div>
+  <div class="card">
+    <form method="GET" class="form-row">
+      <input type="text" name="q" placeholder="名前で検索（部分一致）" value="<?= htmlspecialchars($q, ENT_QUOTES, 'UTF-8') ?>">
 
-    <div style="display:flex; gap:0.5em; align-items:center; flex-wrap:wrap;">
-      <input type="number" name="year_from" placeholder="XXXX"
-        value="<?= htmlspecialchars($year_from_raw, ENT_QUOTES, 'UTF-8') ?>"
-        min="100" max="2100">
-      <span>年 〜</span>
-      <input type="number" name="year_to" placeholder="YYYY"
-        value="<?= htmlspecialchars($year_to_raw, ENT_QUOTES, 'UTF-8') ?>"
-        min="100" max="2100">
-      <span>年</span>
+      <div class="form-row cols-2">
+        <input type="number" name="year_from" placeholder="XXXX" value="<?= htmlspecialchars($year_from_raw, ENT_QUOTES, 'UTF-8') ?>" min="100" max="2100">
+        <input type="number" name="year_to" placeholder="YYYY" value="<?= htmlspecialchars($year_to_raw, ENT_QUOTES, 'UTF-8') ?>" min="100" max="2100">
+      </div>
 
-      <button type="submit">検索</button>
-
-      <?php if ($has_filter): ?>
-        <a href="/users.php" style="margin-left: 0.5em;">クリア</a>
-      <?php endif; ?>
-    </div>
-  </form>
+      <div class="row">
+        <button class="btn primary" type="submit">検索</button>
+        <?php if ($has_filter): ?>
+          <a class="btn ghost" href="/users.php">クリア</a>
+        <?php endif; ?>
+      </div>
+    </form>
+  </div>
 
   <?php foreach($select_sth as $user): ?>
     <div style="display: flex; justify-content: space-between; align-items: center; padding: 1em 2em;">

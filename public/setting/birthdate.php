@@ -41,10 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="/../style.css">
   <title>生年月日設定</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/../_nav.php'; ?>
 <div class="container">
 <a href="./index.php">設定一覧に戻る</a>
 <h1>生年月日設定</h1>

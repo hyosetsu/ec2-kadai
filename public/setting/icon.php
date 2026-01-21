@@ -47,10 +47,11 @@ if (isset($_POST['image_base64'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="/../style.css">
   <title>アイコン画像設定</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/../_nav.php'; ?>
 <div class="container">
 <a href="./index.php">設定一覧に戻る</a>
 

@@ -106,7 +106,6 @@ function bodyFilter(string $body): string {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="stylesheet" href="/style.css">
-</head>
 <style>
 /* ===== カバー画像とアイコンのレイアウト ===== */
 .profile-cover-wrapper {
@@ -137,6 +136,7 @@ function bodyFilter(string $body): string {
   border: 4px solid white; /* 見た目が美しくなる枠線 */
 }
 </style>
+</head>
 <body>
 <?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
 <div class="container">
@@ -218,13 +218,15 @@ function bodyFilter(string $body): string {
 
 <hr>
 
-<h3>自己紹介</h3>
-<div style="white-space: pre-wrap; border: 1px solid #ccc; padding: 1em; width: 400px;">
-  <?php if(empty($user['intro'])): ?>
-    <span style="color: gray;">自己紹介文がまだ設定されていません。</span>
-  <?php else: ?>
-    <?= nl2br(htmlspecialchars($user['intro'], ENT_QUOTES, 'UTF-8')) ?>
-  <?php endif; ?>
+<div class="card">
+  <h2>自己紹介</h2>
+  <div style="white-space: pre-wrap;">
+    <?php if(empty($user['intro'])): ?>
+      <span style="color: gray;">自己紹介文がまだ設定されていません。</span>
+    <?php else: ?>
+      <?= nl2br(htmlspecialchars($user['intro'], ENT_QUOTES, 'UTF-8')) ?>
+    <?php endif; ?>
+  </div>
 </div>
 
 <hr>

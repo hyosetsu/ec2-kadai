@@ -46,10 +46,11 @@ if (isset($_POST['intro'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="/../style.css">
   <title>自己紹介文設定</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/../_nav.php'; ?>
 <div class="container">
 <h1>自己紹介文設定</h1>
 

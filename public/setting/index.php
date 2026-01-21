@@ -19,10 +19,11 @@ $user = $select_sth->fetch();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="/../style.css">
 <title>設定一覧</title>
 </head>
 <body>
+<?php $active = 'timeline'; include __DIR__ . '/../_nav.php'; ?>
 <div class="container">
   <a href="../timeline.php">タイムラインに戻る</a>
   <h1>設定画面</h1>
