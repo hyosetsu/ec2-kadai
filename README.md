@@ -74,11 +74,11 @@ https://github.com/hyosetsu/ec2-kadai/blob/main/public/style.css
 
 ### データベースを作る
 ```
-docker compose exec mysql mysql kadai_db
+docker compose exec mysql mysql example_db
 ```
 でmysqlに接続
 
-kadai_dbがすでに選ばれているのでlog.sqlに書いてある
+example_dbがすでに選ばれているのでlog.sqlに書いてある
 ```
 CREATE TABLE `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
