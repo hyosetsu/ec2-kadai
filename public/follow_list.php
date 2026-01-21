@@ -9,7 +9,7 @@ if (empty($_SESSION['login_user_id'])) {
 }
 
 // DBに接続
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 // 自分がフォローしている一覧をDBから引く。
 // テーブル結合を使って、フォローしている対象の会員情報も一緒に取得。

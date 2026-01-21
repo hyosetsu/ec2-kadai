@@ -3,7 +3,7 @@ require_once __DIR__ . '/init_session.php'; // ← ここを一番上に追加
 // login.php - password_verify() を使用し、PHP標準セッション + Redis保存対応
 
 // DB接続
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 if (!empty($_POST['email']) && !empty($_POST['password'])) {
     // email から会員情報を取得

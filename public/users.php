@@ -1,6 +1,6 @@
 <?php
 session_start();
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 // ログインしてなければログイン画面へ
 if (empty($_SESSION['login_user_id'])) {

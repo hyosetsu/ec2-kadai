@@ -10,7 +10,7 @@ if (empty($_SESSION['login_user_id'])) {
 }
 
 // DB接続
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 // 現在のユーザー情報を取得
 $select_sth = $dbh->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");

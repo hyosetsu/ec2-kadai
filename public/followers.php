@@ -10,7 +10,7 @@ if (empty($_SESSION['login_user_id'])) {
 }
 
 // DB接続
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 // 自分（ログインユーザー）がフォローされている（=自分がフォロイー）一覧を取得
 $select_sth = $dbh->prepare(

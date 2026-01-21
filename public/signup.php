@@ -3,7 +3,7 @@ require_once __DIR__ . '/init_session.php';
 // signup.php - password_hash() を使用
 
 // DB接続
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])) {
   // 同じメールアドレスの存在確認

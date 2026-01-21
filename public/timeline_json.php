@@ -1,5 +1,5 @@
 <?php
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 session_start();
 if (empty($_SESSION['login_user_id'])) { // 非ログインの場合利用不可 401 で空のものを返す

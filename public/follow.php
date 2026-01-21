@@ -8,7 +8,7 @@ if (empty($_SESSION['login_user_id'])) {
 }
 
 // DBに接続
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 // フォロー対象(フォローされる側)のデータを引く
 $followee_user = null;

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/init_session.php';
-$dbh = new PDO('mysql:host=mysql;dbname=example_db', 'root', '');
+$dbh = new PDO('mysql:host=mysql;dbname=kadai_db', 'root', '');
 
 if (empty($_SESSION['login_user_id'])) {
     header("HTTP/1.1 303 See Other");
