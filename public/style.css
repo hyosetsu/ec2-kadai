@@ -221,3 +221,114 @@ textarea{ min-height: 96px; resize: vertical; }
   background: #fafafa;
 }
 
+/* ===== Hamburger / Drawer ===== */
+.menu-btn{
+  display: none; /* PCでは非表示 */
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu-icon{
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #0f5e8d;
+  position: relative;
+}
+.menu-icon::before,
+.menu-icon::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: #0f5e8d;
+}
+.menu-icon::before{ top: -7px; }
+.menu-icon::after{ top: 7px; }
+
+.drawer-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 80;
+}
+
+.drawer{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(78vw, 320px);
+  background: #fff;
+  border-left: 1px solid var(--border);
+  z-index: 90;
+  transform: translateX(100%);
+  transition: transform .2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer.is-open{
+  transform: translateX(0);
+}
+
+.drawer-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.drawer-title{
+  font-weight: 800;
+}
+
+.drawer-close{
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.drawer-links{
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+}
+
+.drawer-links a{
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: #0f5e8d;
+  background: #fff;
+}
+
+.drawer-links a.danger{
+  color: #fff;
+  background: var(--danger);
+  border-color: rgba(231,76,60,.35);
+}
+
+.no-scroll{
+  overflow: hidden;
+}
+
+/* スマホだけ：top-links を隠してハンバーガーを出す */
+@media (max-width: 640px){
+  .top-links{ display: none; }
+  .menu-btn{ display: inline-flex; align-items: center; justify-content: center; }
+}
+
