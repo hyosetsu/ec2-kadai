@@ -55,7 +55,6 @@ if (isset($_POST['intro'])) {
 <h1>自己紹介文設定</h1>
 
 <a href="./index.php">設定一覧に戻る</a>
-<p><a href="/login_finish.php">← 戻る</a></p>
 
 <form method="POST">
   <label>自己紹介 (1000文字以内):</label><br>
