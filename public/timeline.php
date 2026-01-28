@@ -83,11 +83,6 @@ $target_user_ids[] = $_SESSION['login_user_id']; // 自分自身の投稿も表�
     </div>
   </div>
 
-  <div style="margin-bottom: 1em;">
-    <a href="/setting/index.php">設定画面</a>
-    /
-    <a href="/users.php">会員一覧画面</a>
-  </div>
   <!-- フォームのPOST先はこのファイル自身にする -->
   <div class="card">
     <form method="POST" action="./timeline.php">

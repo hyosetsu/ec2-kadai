@@ -54,6 +54,10 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
   <button type="submit">決定</button>
 </form>
 
+<?php if(!empty($_GET['logged_out'])): ?>
+  <div style="color: green;">ログアウトしました。</div>
+<?php endif; ?>
+
 <?php if(!empty($_GET['error'])): ?>
 <div style="color: red;">メールアドレスかパスワードが間違っています。</div>
 <?php endif; ?>

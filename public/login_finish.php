@@ -33,11 +33,6 @@ if (!$user) {
 <p><?php echo htmlspecialchars($user['name']); ?> さん、ログインしました。</p>
 
 <hr>
-<a href="/timeline.php">タイムラインはこちら</a>
-<a href="/profile.php">プロフィールはこちら</a>
-<a href="/setting/index.php">設定画面はこちら</a>
-
-<hr>
 
 <h2>ユーザー情報</h2>
 <ul>
@@ -54,12 +49,6 @@ if (!$user) {
     <li><strong>アイコン：</strong> 未設定</li>
   <?php endif; ?>
 </ul>
-
-<hr>
-
-<p><a href="profile_edit.php">プロフィールを編集する</a></p>
-<p><a href="login.php">ログアウト</a></p>
-
 </body>
 </div>
 </html>

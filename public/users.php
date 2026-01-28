@@ -81,12 +81,6 @@ $has_filter = ($q !== '') || ($year_from_raw !== '') || ($year_to_raw !== '');
 <?php $active = 'timeline'; include __DIR__ . '/_nav.php'; ?>
 <div class="container">
 
-  <div style="margin-bottom: 1em;">
-    <a href="/setting/index.php">設定画面</a>
-    /
-    <a href="/timeline.php">タイムライン</a>
-  </div>
-
   <div class="card">
     <h1 style="margin:0;">会員一覧</h1>
     <div class="muted">名前（部分一致） / 生まれ年（範囲）で検索できます</div>

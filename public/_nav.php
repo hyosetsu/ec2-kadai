@@ -1,6 +1,4 @@
 <?php
-// public/_nav.php
-// 使い方：各ページで $active = 'timeline'; などをセットしてから includeする
 
 $active = $active ?? '';
 
@@ -16,6 +14,7 @@ function tabClass(string $key, string $active): string {
       <a href="/users.php">会員一覧</a>
       <a href="/profile.php">プロフィール</a>
       <a href="/setting/index.php">設定</a>
+      <a href="/logout.php">ログアウト</a>
     </div>
   </div>
 </div>
