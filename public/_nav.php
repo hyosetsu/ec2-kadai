@@ -5,6 +5,14 @@ function tabClass(string $key, string $active): string {
   return $key === $active ? 'tab is-active' : 'tab';
 }
 ?>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
 <div class="header">
   <div class="header-inner">
     <a class="brand" href="/timeline.php">MiniSNS</a>
@@ -87,4 +95,5 @@ function tabClass(string $key, string $active): string {
   });
 })();
 </script>
-
+</body>
+</html>
