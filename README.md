@@ -51,7 +51,7 @@ docker compose exec mysql mysql kadai_db
 でmysqlに接続
 
 kadai_dbがすでに選ばれているのでlog.sqlに書いてある
-```
+```sql
 CREATE TABLE `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` TEXT NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `user_relationships` (
 );
 ```
 でテーブルを作り、データベースの確認で
-```
+```sql
 show tables;
 ```
 で上記で作ったテーブルが出たら、データベース作成完了
