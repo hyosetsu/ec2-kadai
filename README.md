@@ -22,34 +22,8 @@ sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 docker compose version
 ```
 
-## 準備はできたので構築していく
-### 配信するファイルを置くディレクトリを作成
-```
-mkdir public
-mkdir public/setting
-```
-
-### 設定ファイルを作る
-- compose.ymlはhttps://github.com/hyosetsu/ec2-kadai/blob/main/compose.yml から
-- Dockerfileはhttps://github.com/hyosetsu/ec2-kadai/blob/main/Dockerfile から
-- nginx/conf.d/default.confはhttps://github.com/hyosetsu/ec2-kadai/blob/main/nginx/conf.d/default.conf から
-
-### ファイルを作る
-```
-vim public/bbs.php
-```
-等でファイルを編集する
-https://github.com/hyosetsu/ec2-kadai/blob/main/public/bbs.php
-を書く
-
-```
-vim public/style.css
-```
-でcssファイルを編集する
-https://github.com/hyosetsu/ec2-kadai/blob/main/public/style.css
-を書く
-
-## もしくはgitからクローンする
+## Docker系のインストールができたので構築していく
+## まず、gitからクローンする
 ```
 git clone git@github.com:hyosetsu/ec2-kadai.git
 ```
@@ -99,6 +73,10 @@ CREATE TABLE `user_relationships` (
 これで作成完了
 
 ## データベースも作り終わったので、起動する
+```
+cd ec2-kadai
+```
+でクローンしたディレクトリ内に行き、以下を実行する
 ```
 docker compose build
 ```
