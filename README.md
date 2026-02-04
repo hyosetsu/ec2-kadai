@@ -23,7 +23,7 @@ docker compose version
 ```
 
 ## Docker系のインストールができたので構築していく
-## まず、gitからクローンする
+### gitからクローンする
 ```
 git clone git@github.com:hyosetsu/ec2-kadai.git
 ```
@@ -32,8 +32,19 @@ git clone git@github.com:hyosetsu/ec2-kadai.git
 git clone https://github.com/hyosetsu/ec2-kadai.git
 ```
 でクローンする
+### コンテナイメージを作成する
+クローンし終わったら、
+```
+cd ec2-kadai
+```
+でクローンしたディレクトリ内に行き、以下を実行する
+```
+docker compose build
+```
+これが終わったら、イメージ作成完了
 
 ### データベースを作る
+イメージを作り終わったら、
 ```
 docker compose exec mysql mysql kadai_db
 ```
@@ -68,20 +79,14 @@ CREATE TABLE `user_relationships` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
-でテーブルを作る
+でテーブルを作り、データベースの確認で
+```
+show tables;
+```
+で上記で作ったテーブルが出たら、データベース作成完了
 
-これで作成完了
-
-## データベースも作り終わったので、起動する
-```
-cd ec2-kadai
-```
-でクローンしたディレクトリ内に行き、以下を実行する
-```
-docker compose build
-```
-これが終わったら、
+## 作り終わったので起動する
 ```
 docker compose up
 ```
-して起動する
+して起動して、http://54.167.103.68/login.phpにアクセスする
