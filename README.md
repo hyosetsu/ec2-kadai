@@ -89,5 +89,4 @@ show tables;
 ```
 docker compose up
 ```
-して起動して、http://54.167.103.68/login.php
-にアクセスする
+して起動して、ページにアクセスする
