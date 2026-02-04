@@ -1,27 +1,4 @@
 # 実装手順
-## EC2インスタンスに接続
-```
-ssh ec2-user@{IPアドレス} -i C:\Users\ktc\Desktop\{秘密鍵ファイルのパス}
-```
-とpowershellに入れる
-```
-Last login: Wed Sep  3 00:30:32 2025 from 160.86.244.53
-[ec2-user@ip-172-31-28-24 ~]$
-```
-と表示されて接続完了
-
-- EC2インスタンスにvimをインストール
-```
-sudo yum install vim -y
-```
-でインストール
-
-- screenをインストール
-```
-sudo yum install screen -y
-```
-でインストール
-
 - Docker系のインストール
 ```
 sudo yum install -y docker
@@ -72,6 +49,16 @@ vim public/style.css
 https://github.com/hyosetsu/ec2-kadai/blob/main/public/style.css
 を書く
 
+## もしくはgitからクローンする
+```
+git clone git@github.com:hyosetsu/ec2-kadai.git
+```
+か
+```
+git clone https://github.com/hyosetsu/ec2-kadai.git
+```
+でクローンする
+
 ### データベースを作る
 ```
 docker compose exec mysql mysql kadai_db
@@ -111,3 +98,12 @@ CREATE TABLE `user_relationships` (
 
 これで作成完了
 
+## データベースも作り終わったので、起動する
+```
+docker compose build
+```
+これが終わったら、
+```
+docker compose up
+```
+して起動する
