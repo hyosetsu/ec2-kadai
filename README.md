@@ -1,5 +1,5 @@
 # 実装手順
-- Docker系のインストール
+### Docker系のインストール
 ```sh
 sudo yum install -y docker
 sudo systemctl start docker
@@ -11,7 +11,7 @@ dockerをインストールしdockerグループに追加
 
 usermodを反映するために一度ログアウトする
 
-- Docker Composeのインストール
+### Docker Composeのインストール
 ```sh
 sudo mkdir -p /usr/local/lib/docker/cli-plugins/
 sudo curl -SL https://github.com/docker/compose/releases/download/v2.36.0/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
@@ -26,10 +26,6 @@ docker compose version
 ### gitからクローンする
 ```sh
 git clone git@github.com:hyosetsu/ec2-kadai.git
-```
-か
-```sh
-git clone https://github.com/hyosetsu/ec2-kadai.git
 ```
 でクローンする
 ### コンテナイメージを作成する
