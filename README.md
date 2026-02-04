@@ -1,6 +1,6 @@
 # 実装手順
 - Docker系のインストール
-```
+```sh
 sudo yum install -y docker
 sudo systemctl start docker
 sudo systemctl enable docker
@@ -12,40 +12,40 @@ dockerをインストールしdockerグループに追加
 usermodを反映するために一度ログアウトする
 
 - Docker Composeのインストール
-```
+```sh
 sudo mkdir -p /usr/local/lib/docker/cli-plugins/
 sudo curl -SL https://github.com/docker/compose/releases/download/v2.36.0/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
 sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 ```
 インストールできたかの確認
-```
+```sh
 docker compose version
 ```
 
 ## Docker系のインストールができたので構築していく
 ### gitからクローンする
-```
+```sh
 git clone git@github.com:hyosetsu/ec2-kadai.git
 ```
 か
-```
+```sh
 git clone https://github.com/hyosetsu/ec2-kadai.git
 ```
 でクローンする
 ### コンテナイメージを作成する
 クローンし終わったら、
-```
+```sh
 cd ec2-kadai
 ```
 でクローンしたディレクトリ内に行き、以下を実行する
-```
+```sh
 docker compose build
 ```
 これが終わったら、イメージ作成完了
 
 ### データベースを作る
 イメージを作り終わったら、
-```
+```sh
 docker compose exec mysql mysql kadai_db
 ```
 でmysqlに接続
@@ -86,7 +86,7 @@ show tables;
 で上記で作ったテーブルが出たら、データベース作成完了
 
 ## 作り終わったので起動する
-```
+```sh
 docker compose up
 ```
 して起動して、ページにアクセスする
