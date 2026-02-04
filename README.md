@@ -7,9 +7,9 @@ sudo systemctl enable docker
 sudo usermod -a -G docker ec2-user
 ```
 
-dockerをインストールしdockerグループに追加
+dockerをインストールしdockerグループに追加する。
 
-usermodを反映するために一度ログアウトする
+usermodを反映するために一度ログアウトする。
 
 ### Docker Composeのインストール
 ```sh
@@ -17,7 +17,7 @@ sudo mkdir -p /usr/local/lib/docker/cli-plugins/
 sudo curl -SL https://github.com/docker/compose/releases/download/v2.36.0/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
 sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 ```
-インストールできたかの確認
+インストールできたかの確認する。
 ```sh
 docker compose version
 ```
@@ -27,26 +27,26 @@ docker compose version
 ```sh
 git clone git@github.com:hyosetsu/ec2-kadai.git
 ```
-でクローンする
+でクローンする。
 ### コンテナイメージを作成する
 クローンし終わったら、
 ```sh
 cd ec2-kadai
 ```
-でクローンしたディレクトリ内に行き、以下を実行する
+でクローンしたディレクトリ内に行き、以下を実行する。
 ```sh
 docker compose build
 ```
-これが終わったら、イメージ作成完了
+これが終わったら、イメージ作成完了。
 
 ### データベースを作る
 イメージを作り終わったら、
 ```sh
 docker compose exec mysql mysql kadai_db
 ```
-でmysqlに接続
+でmysqlに接続。
 
-kadai_dbがすでに選ばれているのでlog.sqlに書いてある
+kadai_dbがすでに選ばれているのでlog.sqlに書いてある、
 ```sql
 CREATE TABLE `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -75,14 +75,14 @@ CREATE TABLE `user_relationships` (
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
-でテーブルを作り、データベースの確認で
+でテーブルを作り、データベースの確認で、
 ```sql
 show tables;
 ```
-で上記で作ったテーブルが出たら、データベース作成完了
+で上記で作ったテーブルが出たら、データベース作成完了。
 
 ## 作り終わったので起動する
 ```sh
 docker compose up
 ```
-して起動して、ページにアクセスする
+して起動して、ページにアクセスする。
